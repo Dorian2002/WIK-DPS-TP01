@@ -5,7 +5,7 @@ Le port d'écoute de l'application est configuration via le fichier .env et la v
 Toutes les autres routes que /ping retourneront une erreur 404.
 
 Pour set-up le projet : 
-* Téléchargez et installez [Cargo][https://doc.rust-lang.org/cargo/index.html].
+* Téléchargez et installez [Cargo](https://doc.rust-lang.org/cargo/index.html).
 * Téléchargez le repository.
 
 Pour lancer le projet :
