@@ -1,7 +1,7 @@
 # WIK-DPS-TP01
 
 Ce projet est une application Rust servant d'API, elle retourne au format JSON les headers des requêtes faites à la route /ping.
-Le port d'écoute de l'application est configuration via le fichier .env et la variable d'environnement PING_LISTEN_PORT.
+Le port d'écoute de l'application est configurable via le fichier .env et la variable d'environnement PING_LISTEN_PORT.
 Toutes les autres routes que /ping retourneront une erreur 404.
 
 Pour set-up le projet : 
