@@ -8,14 +8,12 @@ use dotenv::dotenv;
 fn main() {
     dotenv().ok();
     let address = match env::var("PING_LISTEN_PORT") {
-        Ok(val) => format!("127.0.0.1:{val}"),
-        Err(e) => panic!("could not find {}: {}", "PING_LISTEN_PORT", e),
+        Ok(val) => format!("0.0.0.0:{val}"),
+        Err(e) => format!("0.0.0.0:8080"),
     };
     let listener = TcpListener::bind(address).unwrap();
-
     for stream in listener.incoming() {
         let stream = stream.unwrap();
-
         handle_connection(stream);
     }
 }
@@ -29,8 +27,6 @@ fn handle_connection(mut stream: TcpStream) {
     .take_while(|line| !line.is_empty())
     .collect();
 
-    //PING_LISTEN_PORT
-
     if http_request[0] == "GET /ping HTTP/1.1" {
         let status_line = "HTTP/1.1 200 OK";
         let mut contents:Vec<String> = Vec::new();
@@ -40,15 +36,12 @@ fn handle_connection(mut stream: TcpStream) {
         }
         contents.push(format!("\"{}\":\"{}\",","Content-Type", "application/json"));
         let response = format!("{status_line}\r\n\r\n{{\n\t{}\n}}",contents.join(",\n\t"));
-
         stream.write_all(response.as_bytes()).unwrap();
     } else {
         let status_line = "HTTP/1.1 404 NOT FOUND";
-
         let response = format!(
             "{status_line}\r\n"
         );
-
         stream.write_all(response.as_bytes()).unwrap();
     }
 }

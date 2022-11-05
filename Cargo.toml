@@ -1,5 +1,5 @@
 [package]
-name = "WIK-DPS-TP01"
+name = "wik_dps_tp01"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,5 +7,3 @@ edition = "2021"
 
 [dependencies]
 dotenv = "0.15.0"
-rocket = { version = "0.5.0-rc.2", features = ["json"] }
-

@@ -2,7 +2,7 @@
 
 Ce projet est une application Rust servant d'API, elle retourne au format JSON les headers des requêtes faites à la route /ping.
 Le port d'écoute de l'application est configurable via le fichier .env et la variable d'environnement PING_LISTEN_PORT.
-Toutes les autres routes que /ping retourneront une erreur 404.
+Toutes les autres routes que /ping retourneront une erreur 404. L'application est aussi disponible en container docker, le DockerFile2 étant le plus abouti.
 
 Pour set-up le projet : 
 * Téléchargez et installez [Cargo](https://doc.rust-lang.org/cargo/index.html).
